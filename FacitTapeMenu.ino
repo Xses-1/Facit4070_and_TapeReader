@@ -41,7 +41,7 @@
 //String version_text = " Version 1.3   20th April 2018   EIA N/C code added.\r\n http://faculty.etsu.edu/hemphill/entc3710/nc-prog/nc-04-01.htm";
 //String version_text = " Version 1.3.1   20th April 2018   Added a single space between letters in human readable. ";
 String version_text = " Version 1.4   11th March 2020   Added convention mode - punches ASCII and human readable. ";
-String device_greeting = "+++ Welcome to the Facit 4070 tape punch +++\r\nEnter ? for help.";
+String device_greeting = "+++ Welcome to the paper tape interface thing +++\r\nEnter ? for help.";
 
 String top_menu_title = "Punch Main Menu";
 
@@ -64,7 +64,7 @@ static int PRpin = 12;
 
 void setup() {
 
-  Serial.begin(115200);
+  Serial.begin(200000);
   #if defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_MEGA) 
     DDRK = 0xFF;
   #endif
@@ -136,6 +136,13 @@ void loop()
       case 'z':
           conventionMode();
           break;
+
+      case 'r':
+	  readASCII();
+	  break;
+      case 'R':
+	  readHEX();
+	  break;
       
     }
    }
